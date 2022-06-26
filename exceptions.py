@@ -1,0 +1,2 @@
+class NotCorrectReceipt(Exception):
+    pass
