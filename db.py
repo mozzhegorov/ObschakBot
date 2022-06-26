@@ -122,7 +122,9 @@ UPDATE_CALC = """
 def create_tables():
     with sqlite3.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
+        print('Созданы новые таблицы')
         cursor.executescript(CREATE_DATA_TABLE)
+        cursor.executescript(CREATE_NOW_CALC_TABLE)
 
 
 def data_base_action(script, inserted_data=None):
@@ -144,3 +146,7 @@ def data_base_fetchone(script, inserted_data=None):
     with sqlite3.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         return cursor.execute(script, inserted_data).fetchone()
+
+
+if __name__ == '__main__':
+    create_tables()

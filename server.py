@@ -44,7 +44,10 @@ async def new_calculation(message: types.Message):
 async def all_calculations(message: types.Message):
     """Список всех расчетов"""
     all_calcs = get_all_calcs(message.from_user.id)
-    answer = text_all_calcs(all_calcs)
+    if all_calcs:
+        answer = text_all_calcs(all_calcs)
+    else:
+        answer = 'Отсутствют отчеты с данными'
     await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
