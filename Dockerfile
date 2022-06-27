@@ -1,4 +1,12 @@
-FROM arm32v7/python:3.8-buster
+FROM ubuntu as builder
+RUN apt-get update -q \
+  && apt-get install -y \
+    git \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 https://github.com/rmountjoy92/DashMachine.git /git
+
+FROM python:3.8-slim
 
 WORKDIR /home
 
