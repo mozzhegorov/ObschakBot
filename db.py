@@ -2,7 +2,7 @@ import sqlite3
 from typing import List, Union
 
 # TODO: добавить имя базы в переменную виртуального окружения
-DATABASE_NAME = 'basketbot.db'
+DATABASE_NAME = 'db/basketbot.db'
 
 CREATE_DATA_TABLE = """
     DROP TABLE IF EXISTS 'cashdata';
