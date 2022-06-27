@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM ubuntu:18.00
 
 WORKDIR /home
 
