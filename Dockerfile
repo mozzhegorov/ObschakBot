@@ -6,7 +6,8 @@ ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY requirements.txt ./
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip install --upgrade pip
+#RUN /usr/local/bin/python -m pip install --upgrade pip
 #RUN pip3 install --default-timeout=200 --user poetry
 #RUN pip install aiogram==2.20
 RUN pip install python-environ==0.4.54
