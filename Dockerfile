@@ -13,5 +13,6 @@ RUN pip install python-environ==0.4.54
 RUN apt-get install sqlite3
 COPY *.env ./
 COPY *.py ./
+RUN mkdir /db
 
 ENTRYPOINT ["python", "server.py"]
