@@ -166,8 +166,15 @@ UPDATE_CALC = """
 def create_tables():
     with sqlite3.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
-        cursor.executescript(CREATE_DATA_TABLE)
-        cursor.executescript(CREATE_NOW_CALC_TABLE)
+        cursor.execute(ALL_DATA)
+        table_exists = cursor.fetchall()
+        if table_exists:
+            cursor.executescript(CREATE_DATA_TABLE)
+
+        cursor.execute(ALL_CALCS)
+        table_exists = cursor.fetchall()
+        if table_exists:
+            cursor.executescript(CREATE_NOW_CALC_TABLE)
 
 
 def data_base_action(script, inserted_data=None):
@@ -192,4 +199,4 @@ def data_base_fetchone(script, inserted_data=None):
 
 
 if __name__ == '__main__':
-    pass
+    create_tables()
