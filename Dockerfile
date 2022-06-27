@@ -8,6 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY requirements.txt ./
 RUN /usr/local/bin/python -m pip install --upgrade pip
 #RUN pip3 install --default-timeout=200 --user poetry
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 RUN pip install aiogram==2.20
 RUN pip python-environ==0.4.54
 RUN git clone https://github.com/matplotlib/matplotlib
