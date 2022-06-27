@@ -7,6 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip
+RUN apt-get update
 #RUN /usr/local/bin/python -m pip install --upgrade pip
 #RUN pip3 install --default-timeout=200 --user poetry
 #RUN pip install aiogram==2.20
