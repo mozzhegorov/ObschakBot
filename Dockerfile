@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 RUN pip install python-environ==0.4.54
 RUN pip install aiogram==2.20
 RUN apt-get install sqlite3
-RUN apt-get install python3-matplotlib
+RUN yes | apt-get install python3-matplotlib
 COPY *.env ./
 COPY *.py ./
 
