@@ -11,7 +11,7 @@ RUN pip install --upgrade pip
 #RUN pip3 install --default-timeout=200 --user poetry
 #RUN pip install aiogram==2.20
 RUN pip install python-environ==0.4.54
-RUN pip install matplotlib --use-deprecated=backtrack-on-build-failures
+RUN pip install matplotlib
 #RUN pip install -r requirements.txt
 RUN apt-get install sqlite3
 COPY *.env ./
