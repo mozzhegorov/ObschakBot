@@ -2,10 +2,10 @@ FROM arm32v7/python:3.8-buster
 
 WORKDIR /home
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY requirements.txt ./
-RUN apt-get update
+#RUN apt-get update
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN apt-get install sqlite3
