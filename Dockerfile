@@ -8,7 +8,7 @@ WORKDIR /home
 
 COPY requirements.txt ./
 RUN #apt-get update
-RUN #python -m pip install --default-timeout=300 --upgrade pip
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN apt-get install sqlite3
 COPY *.env ./
