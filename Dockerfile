@@ -1,4 +1,4 @@
-FROM ubuntu:18.00
+FROM ubuntu:18.04
 
 WORKDIR /home
 
