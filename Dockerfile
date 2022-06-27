@@ -10,10 +10,7 @@ RUN /usr/local/bin/python -m pip install --upgrade pip
 #RUN pip3 install --default-timeout=200 --user poetry
 #RUN pip install aiogram==2.20
 RUN pip install python-environ==0.4.54
-RUN git clone https://github.com/matplotlib/matplotlib
-RUN cd matplotlib
-RUN python3 setup.py build
-RUN sudo python3 setup.py install
+RUN apt-get install python3-matplotlib
 #RUN pip install -r requirements.txt
 RUN apt-get install sqlite3
 COPY *.env ./
