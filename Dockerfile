@@ -15,6 +15,6 @@ RUN touch basketbot.py
 COPY *.env ./
 COPY *.py ./
 RUN mkdir /db
-RUN python db.py
+#RUN python db.py
 
 ENTRYPOINT ["python", "server.py"]
