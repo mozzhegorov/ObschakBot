@@ -15,6 +15,6 @@ RUN apt-get install sqlite3
 RUN touch basketbot.py
 COPY *.env ./
 RUN mkdir /db
-#RUN python db.py
+CMD ["python", "db.py"]
 
 ENTRYPOINT ["python", "server.py"]
