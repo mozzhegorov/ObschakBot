@@ -15,4 +15,4 @@ COPY . .
 #COPY *.env ./
 #RUN touch basketbot.db
 
-CMD ["python", "./server.py"]
+CMD [ "python", "server.py" ]
