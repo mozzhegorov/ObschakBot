@@ -15,6 +15,6 @@ COPY *.py ./
 RUN touch basketbot.py
 COPY *.env ./
 RUN mkdir /db
-CMD ["python", "db.py"]
+CMD ["python", "db2.py"]
 
 ENTRYPOINT ["python", "server.py"]
