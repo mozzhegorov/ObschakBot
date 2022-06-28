@@ -13,6 +13,6 @@ RUN pip install python-environ==0.4.54
 RUN apt-get install sqlite3
 COPY . /
 #COPY *.env ./
-RUN touch basketbot.db
+#RUN touch basketbot.db
 
 ENTRYPOINT ["python", "./server.py"]
