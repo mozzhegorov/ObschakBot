@@ -12,8 +12,8 @@ RUN yes | apt-get install python3-matplotlib
 RUN pip install python-environ==0.4.54
 RUN apt-get install sqlite3
 RUN touch basketbot.py
-COPY *.py ./
-COPY *.env ./
+COPY *.py .
+COPY *.env .
 RUN mkdir /db
 CMD ["python", "db2.py"]
 
