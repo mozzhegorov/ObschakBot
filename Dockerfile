@@ -15,4 +15,4 @@ COPY *.py ./
 COPY *.env ./
 #RUN touch basketbot.db
 
-ENTRYPOINT ["python", "server.py"]
+ENTRYPOINT ["python3", "server.py"]
