@@ -10,10 +10,10 @@ RUN pip install --upgrade pip
 RUN pip install aiogram==2.20
 RUN yes | apt-get install python3-matplotlib
 RUN pip install python-environ==0.4.54
+COPY *.py ./
 RUN apt-get install sqlite3
 RUN touch basketbot.py
 COPY *.env ./
-COPY *.py ./
 RUN mkdir /db
 #RUN python db.py
 
