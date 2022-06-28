@@ -175,13 +175,13 @@ def create_tables():
     with sqlite3.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute(DATA_EXISTS)
-        table_exists = cursor.fetchall()
-        if table_exists:
+        table_exists = bool(cursor.fetchall())
+        if not table_exists:
             cursor.executescript(CREATE_DATA_TABLE)
 
         cursor.execute(CALCS_EXISTS)
-        table_exists = cursor.fetchall()
-        if table_exists:
+        table_exists = bool(cursor.fetchall())
+        if not table_exists:
             cursor.executescript(CREATE_NOW_CALC_TABLE)
 
 
