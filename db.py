@@ -102,7 +102,7 @@ SELECT * FROM cashdata
 JOIN calc_now cn on cashdata.user_id = cn.user_id and cashdata.calc_id = cn.calc_id
 WHERE cn.calc_id = cashdata.calc_id and cn.user_id = ? and cn.calc_id = ?
 """
-ALL_CALCS = """
+ALL_CALCS_BY_USER = """
 SELECT calc_id, calc_alias FROM cashdata
 WHERE user_id = ?
 """
@@ -155,6 +155,14 @@ ALL_CALCS = """
 ALL_DATA = """
     SELECT * FROM 'cashdata';
 """
+CALCS_EXISTS = """
+    SELECT name FROM sqlite_master 
+    WHERE type='table' AND name='calc_now';
+"""
+DATA_EXISTS = """
+    SELECT name FROM sqlite_master 
+    WHERE type='table' AND name='cashdata';
+"""
 UPDATE_CALC = """
     UPDATE 'calc_now' 
     SET calc_id=?,
@@ -166,12 +174,12 @@ UPDATE_CALC = """
 def create_tables():
     with sqlite3.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
-        cursor.execute(ALL_DATA)
+        cursor.execute(DATA_EXISTS)
         table_exists = cursor.fetchall()
         if table_exists:
             cursor.executescript(CREATE_DATA_TABLE)
 
-        cursor.execute(ALL_CALCS)
+        cursor.execute(CALCS_EXISTS)
         table_exists = cursor.fetchall()
         if table_exists:
             cursor.executescript(CREATE_NOW_CALC_TABLE)

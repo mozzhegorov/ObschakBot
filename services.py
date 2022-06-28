@@ -47,7 +47,7 @@ def add_new_calc(alias: str, user_id: int):
 
 
 def get_all_calcs(user_id: int):
-    all_calcs = data_base_fetch(ALL_CALCS, (user_id,))
+    all_calcs = data_base_fetch(ALL_CALCS_BY_USER, (user_id,))
     dic_of_calcs = {calc[0]: calc[1] for calc in all_calcs}
     return dic_of_calcs
 
