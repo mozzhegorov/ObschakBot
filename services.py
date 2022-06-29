@@ -16,7 +16,7 @@ def get_data_from_user(message: str):
 
 def add_peceipt(message: str, user_id: int):
     try:
-        sponsor, money, consumers = get_data_from_user(message, user_id)
+        sponsor, money, consumers = get_data_from_user(message)
     except ValueError as e:
         print(f'value error - {e}')
         raise NotCorrectReceipt
