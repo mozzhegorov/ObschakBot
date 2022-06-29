@@ -5,7 +5,7 @@ from aiogram.types import ParseMode
 
 from db import create_tables
 from exceptions import NotCorrectReceipt
-# from matplot import get_visual_report, get_visual_table_data
+from matplot import get_visual_report, get_visual_table_data
 from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
     get_dict_of_credits_data, delete_all_calcs, change_calc
 
@@ -58,17 +58,17 @@ async def del_all_calculations(message: types.Message):
     await message.reply(answer)
 
 
-# @dp.message_handler(commands=['picreport'])
-# async def pic_reporting(message: types.Message):
-#     """Получение отчета активного расчета в виде картинки"""
-#     calc_id, calc_alias, raw_data = get_dict_of_credits_data(message.from_user.id)
-#     labels, cells = get_visual_table_data(raw_data)
-#     if cells:
-#         pic = get_visual_report(labels=labels, cell_text=cells)
-#         caption = f'Вывод данных об расчете номер {calc_id}, короткое имя - {calc_alias}'
-#         await message.answer_photo(photo=pic, caption=caption)
-#     else:
-#         await message.answer('Данные в расчете отсутствуют')
+@dp.message_handler(commands=['picreport'])
+async def pic_reporting(message: types.Message):
+    """Получение отчета активного расчета в виде картинки"""
+    calc_id, calc_alias, raw_data = get_dict_of_credits_data(message.from_user.id)
+    labels, cells = get_visual_table_data(raw_data)
+    if cells:
+        pic = get_visual_report(labels=labels, cell_text=cells)
+        caption = f'Вывод данных об расчете номер {calc_id}, короткое имя - {calc_alias}'
+        await message.answer_photo(photo=pic, caption=caption)
+    else:
+        await message.answer('Данные в расчете отсутствуют')
 
 
 @dp.message_handler(lambda message: message.text.startswith('/del'))
