@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
 RUN pip install --upgrade pip
 #COPY requirements.txt .
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 RUN pip install aiogram==2.21
 RUN pip install aiohttp==3.8.1
 RUN pip install aiosignal==1.2.0
