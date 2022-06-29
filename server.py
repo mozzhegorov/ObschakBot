@@ -10,26 +10,26 @@ from exceptions import NotCorrectReceipt
 from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
     get_dict_of_credits_data, delete_all_calcs, change_calc
 
-from texts import *
-import environ
+# from texts import *
+# import environ
 
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
-API_TOKEN = env.get_value('API_TOKEN')
+# API_TOKEN = env.get_value('API_TOKEN')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
 # Initialize bot and dispatcher
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
-
-
-@dp.message_handler(commands=['start', 'help'])
-async def new_calculation(message: types.Message):
-    """Добавление нового расчета"""
-    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
+# bot = Bot(token=API_TOKEN)
+# dp = Dispatcher(bot)
+#
+#
+# @dp.message_handler(commands=['start', 'help'])
+# async def new_calculation(message: types.Message):
+#     """Добавление нового расчета"""
+#     await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
 
 
 # @dp.message_handler(commands=['new'])
@@ -129,4 +129,6 @@ async def new_calculation(message: types.Message):
 
 if __name__ == '__main__':
     # create_tables()
-    executor.start_polling(dp, skip_updates=True)
+    # executor.start_polling(dp, skip_updates=True)
+    while True:
+        print(1)
