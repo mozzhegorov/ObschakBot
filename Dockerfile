@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.8.13-buster
+FROM arm32v7/python:3.8-buster
 
 WORKDIR /home
 
