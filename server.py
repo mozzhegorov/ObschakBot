@@ -6,7 +6,7 @@ from aiogram.types import ParseMode
 
 from db import create_tables
 from exceptions import NotCorrectReceipt
-from matplot import get_visual_report, get_visual_table_data
+# from matplot import get_visual_report, get_visual_table_data
 from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
     get_dict_of_credits_data, delete_all_calcs, change_calc
 
@@ -22,14 +22,14 @@ API_TOKEN = env.get_value('API_TOKEN')
 logging.basicConfig(level=logging.INFO)
 
 # Initialize bot and dispatcher
-# bot = Bot(token=API_TOKEN)
-# dp = Dispatcher(bot)
-#
-#
-# @dp.message_handler(commands=['start', 'help'])
-# async def new_calculation(message: types.Message):
-#     """Добавление нового расчета"""
-#     await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
+bot = Bot(token=API_TOKEN)
+dp = Dispatcher(bot)
+
+
+@dp.message_handler(commands=['start', 'help'])
+async def new_calculation(message: types.Message):
+    """Добавление нового расчета"""
+    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
 
 
 # @dp.message_handler(commands=['new'])
