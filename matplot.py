@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import io
-import numpy as np
 
 from services import get_dict_of_credits_data
 

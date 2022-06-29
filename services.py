@@ -1,11 +1,8 @@
-from collections import defaultdict
-from typing import Tuple
-
 from exceptions import *
 from db import *
 
 
-def get_data_from_user(message: str, user_id: int):
+def get_data_from_user(message: str):
     sponsor, money, *consumers = message.split()
     try:
         sponsor = str(sponsor)
