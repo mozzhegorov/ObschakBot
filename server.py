@@ -4,19 +4,19 @@ import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ParseMode
 
-# from db import create_tables
-# from exceptions import NotCorrectReceipt
-# from matplot import get_visual_report, get_visual_table_data
-# from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
-#     get_dict_of_credits_data, delete_all_calcs, change_calc
+from db import create_tables
+from exceptions import NotCorrectReceipt
+from matplot import get_visual_report, get_visual_table_data
+from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
+    get_dict_of_credits_data, delete_all_calcs, change_calc
 
-# from texts import *
-# import environ
+from texts import *
+import environ
 
-# env = environ.Env()
-# environ.Env.read_env()
+env = environ.Env()
+environ.Env.read_env()
 
-# API_TOKEN = env.get_value('API_TOKEN')
+API_TOKEN = env.get_value('API_TOKEN')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
