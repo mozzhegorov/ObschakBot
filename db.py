@@ -111,11 +111,11 @@ WHERE cn.calc_id = cashdata.calc_id and cn.user_id = %s and cn.calc_id = %s
 """
 ALL_CALCS_BY_USER = """
 SELECT calc_id, calc_alias FROM cashdata
-WHERE user_id = %s
+WHERE user_id=%s
 """
 LAST_CALC_DATA = """
 SELECT calc_id, calc_alias FROM calc_now
-WHERE user_id = %s
+WHERE user_id=%s
 ORDER BY calc_id DESC
 LIMIT 1
 """
