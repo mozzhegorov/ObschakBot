@@ -184,12 +184,12 @@ def create_tables():
         cursor.execute(DATA_EXISTS)
         table_exists = bool(cursor.fetchall())
         if not table_exists:
-            cursor.executescript(CREATE_DATA_TABLE)
+            cursor.execute(CREATE_DATA_TABLE)
 
         cursor.execute(CALCS_EXISTS)
         table_exists = bool(cursor.fetchall())
         if not table_exists:
-            cursor.executescript(CREATE_NOW_CALC_TABLE)
+            cursor.execute(CREATE_NOW_CALC_TABLE)
 
 
 def data_base_action(script, inserted_data=None):
@@ -198,7 +198,7 @@ def data_base_action(script, inserted_data=None):
         if inserted_data:
             cursor.execute(script, inserted_data)
         else:
-            cursor.executescript(script)
+            cursor.execute(script)
 
 
 def data_base_fetch(script, inserted_data=None):
