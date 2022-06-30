@@ -117,7 +117,7 @@ LAST_CALC_DATA = """
 SELECT calc_id, calc_alias FROM calc_now
 WHERE user_id=%s
 ORDER BY calc_id DESC
-LIMIT 1
+LIMIT 1;
 """
 INSERT_CALC = """
     INSERT INTO calc_now VALUES 
