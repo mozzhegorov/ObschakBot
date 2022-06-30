@@ -72,22 +72,24 @@ def get_dict_of_credits_data(user_id: int):
     get_all_receipts = data_base_fetch(GET_ALL_RECEIPT_DATA, (user_id, last_calc_id))
     result_dict = {}
     alias = str
+    sponsors = set()
+    consumers = set()
+    for receipt in get_all_receipts:
+        consumers_receipt = [consumer for consumer in receipt[7:25] if consumer is not None]
+        consumers = consumers.update(consumers_receipt)
+
     for receipt in get_all_receipts:
         alias = receipt[3]
         sponsor = receipt[5]
         money = receipt[6]
-        consumers = [consumer for consumer in receipt[7:25] if consumer is not None]
+        cons = [consumer for consumer in receipt[7:25] if consumer is not None]
         if sponsor not in result_dict:
-            result_dict[sponsor] = {}
-        for consumer in consumers:
+            result_dict[sponsor] = {consumer: 0 for consumer in consumers}
+        for consumer in cons:
             if consumer == sponsor:
                 continue
-            if consumer not in result_dict[sponsor]:
-                result_dict[sponsor][consumer] = 0
-            if consumer in result_dict and sponsor in result_dict[consumer]:
-                result_dict[consumer][sponsor] -= money / len(consumers)
-            else:
-                result_dict[sponsor][consumer] += money / len(consumers)
+            result_dict[consumer][sponsor] -= money / len(consumers)
+            result_dict[sponsor][consumer] += money / len(consumers)
     return last_calc_id, alias, result_dict
 
 
