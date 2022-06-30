@@ -1,8 +1,15 @@
-import sqlite3
+import psycopg2 as dbdriver
+
 from typing import List, Union
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 
 # TODO: добавить имя базы в переменную виртуального окружения
-DATABASE_NAME = 'basketbot.db'
+# DATABASE_NAME = 'basketbot.db'
+DATABASE_NAME = env.get_value('DATABASE_URL')
 
 CREATE_DATA_TABLE = """
     CREATE TABLE IF NOT EXISTS 'cashdata' (
@@ -172,7 +179,7 @@ UPDATE_CALC = """
 
 
 def create_tables():
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute(DATA_EXISTS)
         table_exists = bool(cursor.fetchall())
@@ -186,7 +193,7 @@ def create_tables():
 
 
 def data_base_action(script, inserted_data=None):
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         if inserted_data:
             cursor.execute(script, inserted_data)
@@ -195,13 +202,13 @@ def data_base_action(script, inserted_data=None):
 
 
 def data_base_fetch(script, inserted_data=None):
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         return cursor.execute(script, inserted_data).fetchall()
 
 
 def data_base_fetchone(script, inserted_data=None):
-    with sqlite3.connect(DATABASE_NAME) as conn:
+    with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         return cursor.execute(script, inserted_data).fetchone()
 
