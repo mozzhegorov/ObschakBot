@@ -164,11 +164,11 @@ ALL_DATA = """
 """
 CALCS_EXISTS = """
     SELECT * FROM information_schema.tables  
-    WHERE name='calc_now';
+    WHERE table_name='calc_now';
 """
 DATA_EXISTS = """
     SELECT * FROM information_schema.tables 
-    WHERE name='cashdata';
+    WHERE table_name='cashdata';
 """
 UPDATE_CALC = """
     UPDATE 'calc_now' 
