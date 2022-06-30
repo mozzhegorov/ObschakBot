@@ -91,70 +91,70 @@ CREATE_NEW_NOW_CALC_TABLE = """
 """
 INSERT_RECEIPT = """
     INSERT INTO cashdata VALUES 
-    (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;
+    (null, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ;
 """
 GET_LAST_CALC = """
     SELECT calc_alias, receipt_id from cashdata
-    WHERE user_id=? and calc_id=?
+    WHERE user_id=%s and calc_id=%s
 """
 GET_LAST_RECEIPT_DATA = """
 SELECT cn.calc_id, cn.calc_alias, receipt_id FROM cashdata
 JOIN calc_now cn on cashdata.user_id = cn.user_id and cashdata.calc_id = cn.calc_id
-WHERE cn.calc_id = cashdata.calc_id and cn.user_id = ?
+WHERE cn.calc_id = cashdata.calc_id and cn.user_id = %s
 ORDER BY receipt_id DESC
 LIMIT 1
 """
 GET_ALL_RECEIPT_DATA = """
 SELECT * FROM cashdata
 JOIN calc_now cn on cashdata.user_id = cn.user_id and cashdata.calc_id = cn.calc_id
-WHERE cn.calc_id = cashdata.calc_id and cn.user_id = ? and cn.calc_id = ?
+WHERE cn.calc_id = cashdata.calc_id and cn.user_id = %s and cn.calc_id = %s
 """
 ALL_CALCS_BY_USER = """
 SELECT calc_id, calc_alias FROM cashdata
-WHERE user_id = ?
+WHERE user_id = %s
 """
 LAST_CALC_DATA = """
 SELECT calc_id, calc_alias FROM calc_now
-WHERE user_id = ?
+WHERE user_id = %s
 ORDER BY calc_id DESC
 LIMIT 1
 """
 INSERT_CALC = """
     INSERT INTO calc_now VALUES 
-    (null, ?, ?, ?) ;
+    (null, %s, %s, %s) ;
 """
 DELETE_CALC_FROM_CALCS = """
     DELETE FROM calc_now 
-    WHERE calc_id=? and user_id=?;
+    WHERE calc_id=%s and user_id=%s;
 """
 DELETE_CALC_FROM_CASHDATA = """
     DELETE FROM cashdata 
-    WHERE calc_id=? and user_id=?;
+    WHERE calc_id=%s and user_id=%s;
 """
 DELETE_ALL_CALCS_FROM_CASHDATA = """
     DELETE FROM cashdata 
-    WHERE user_id=?;
+    WHERE user_id=%s;
 """
 DELETE_ALL_CALCS_FROM_CALCS = """
     DELETE FROM calc_now 
-    WHERE user_id=?;
+    WHERE user_id=%s;
 """
 GET_CALC_ALIAS = """
     SELECT calc_alias FROM cashdata 
-    WHERE user_id=? and calc_id=?
+    WHERE user_id=%s and calc_id=%s
     LIMIT 1;
 """
 GET_CALC_BY_USER = """
     SELECT calc_id, calc_alias FROM calc_now 
-    WHERE user_id=?;
+    WHERE user_id=%s;
 """
 GET_CALC_BY_USER_CALCID_IN_CASHS = """
     SELECT calc_alias FROM cashdata 
-    WHERE user_id=? and calc_id=?;
+    WHERE user_id=%s and calc_id=%s;
 """
 GET_CALC_BY_USER_CALCID_IN_CALCS = """
     SELECT calc_alias FROM cashdata 
-    WHERE user_id=? and calc_id=?;
+    WHERE user_id=%s and calc_id=%s;
 """
 ALL_CALCS = """
     SELECT * FROM calc_now;
@@ -172,9 +172,9 @@ DATA_EXISTS = """
 """
 UPDATE_CALC = """
     UPDATE calc_now 
-    SET calc_id=?,
-        calc_alias=?
-    WHERE user_id=?;
+    SET calc_id=%s,
+        calc_alias=%s
+    WHERE user_id=%s;
 """
 
 
