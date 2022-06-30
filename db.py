@@ -114,7 +114,8 @@ SELECT calc_id, calc_alias FROM cashdata
 WHERE user_id=%s
 """
 LAST_CALC_DATA = """
-SELECT * FROM calc_now;
+SELECT calc_id, calc_alias FROM calc_now
+WHERE user_id=%s;
 """
 INSERT_CALC = """
     INSERT INTO calc_now VALUES 
@@ -209,7 +210,7 @@ def data_base_fetchone(script, inserted_data=None):
     with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute(script, inserted_data)
-        cursor.fetchone()
+        return cursor.fetchone()
 
 
 if __name__ == '__main__':
