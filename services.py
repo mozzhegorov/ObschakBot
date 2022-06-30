@@ -82,14 +82,15 @@ def get_dict_of_credits_data(user_id: int):
         alias = receipt[3]
         sponsor = receipt[5]
         money = receipt[6]
+        consumers_receipt = [consumer for consumer in receipt[7:25] if consumer is not None]
         cons = [consumer for consumer in receipt[7:25] if consumer is not None]
         if sponsor not in result_dict:
-            result_dict[sponsor] = {consumer: 0 for consumer in consumers}
+            result_dict[sponsor] = {consumer: 0 for consumer in consumers_receipt}
         for consumer in cons:
             if consumer == sponsor:
                 continue
-            result_dict[consumer][sponsor] -= money / len(consumers)
-            result_dict[sponsor][consumer] += money / len(consumers)
+            result_dict[consumer][sponsor] -= money / len(consumers_receipt)
+            result_dict[sponsor][consumer] += money / len(consumers_receipt)
     return last_calc_id, alias, result_dict
 
 
