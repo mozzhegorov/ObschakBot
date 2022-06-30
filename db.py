@@ -90,11 +90,11 @@ CREATE_NEW_NOW_CALC_TABLE = """
     );
 """
 INSERT_RECEIPT = """
-    INSERT INTO 'cashdata' VALUES 
+    INSERT INTO cashdata VALUES 
     (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;
 """
 GET_LAST_CALC = """
-    SELECT calc_alias, receipt_id from 'cashdata'
+    SELECT calc_alias, receipt_id from cashdata
     WHERE user_id=? and calc_id=?
 """
 GET_LAST_RECEIPT_DATA = """
@@ -120,58 +120,58 @@ ORDER BY calc_id DESC
 LIMIT 1
 """
 INSERT_CALC = """
-    INSERT INTO 'calc_now' VALUES 
+    INSERT INTO calc_now VALUES 
     (null, ?, ?, ?) ;
 """
 DELETE_CALC_FROM_CALCS = """
-    DELETE FROM 'calc_now' 
+    DELETE FROM calc_now 
     WHERE calc_id=? and user_id=?;
 """
 DELETE_CALC_FROM_CASHDATA = """
-    DELETE FROM 'cashdata' 
+    DELETE FROM cashdata 
     WHERE calc_id=? and user_id=?;
 """
 DELETE_ALL_CALCS_FROM_CASHDATA = """
-    DELETE FROM 'cashdata' 
+    DELETE FROM cashdata 
     WHERE user_id=?;
 """
 DELETE_ALL_CALCS_FROM_CALCS = """
-    DELETE FROM 'calc_now' 
+    DELETE FROM calc_now 
     WHERE user_id=?;
 """
 GET_CALC_ALIAS = """
-    SELECT calc_alias FROM 'cashdata' 
+    SELECT calc_alias FROM cashdata 
     WHERE user_id=? and calc_id=?
     LIMIT 1;
 """
 GET_CALC_BY_USER = """
-    SELECT calc_id, calc_alias FROM 'calc_now' 
+    SELECT calc_id, calc_alias FROM calc_now 
     WHERE user_id=?;
 """
 GET_CALC_BY_USER_CALCID_IN_CASHS = """
-    SELECT calc_alias FROM 'cashdata' 
+    SELECT calc_alias FROM cashdata 
     WHERE user_id=? and calc_id=?;
 """
 GET_CALC_BY_USER_CALCID_IN_CALCS = """
-    SELECT calc_alias FROM 'cashdata' 
+    SELECT calc_alias FROM cashdata 
     WHERE user_id=? and calc_id=?;
 """
 ALL_CALCS = """
-    SELECT * FROM 'calc_now';
+    SELECT * FROM calc_now;
 """
 ALL_DATA = """
-    SELECT * FROM 'cashdata';
+    SELECT * FROM cashdata;
 """
 CALCS_EXISTS = """
     SELECT * FROM information_schema.tables  
-    WHERE table_name='calc_now';
+    WHERE table_name=calc_now;
 """
 DATA_EXISTS = """
     SELECT * FROM information_schema.tables 
-    WHERE table_name='cashdata';
+    WHERE table_name=cashdata;
 """
 UPDATE_CALC = """
-    UPDATE 'calc_now' 
+    UPDATE calc_now 
     SET calc_id=?,
         calc_alias=?
     WHERE user_id=?;
