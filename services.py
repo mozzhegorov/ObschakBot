@@ -38,7 +38,7 @@ def add_peceipt(message: str, user_id: int):
 def add_new_calc(alias: str, user_id: int):
     calculations_data = data_base_fetchone(GET_CALC_BY_USER, (user_id,))
     if calculations_data:
-        data_base_action(UPDATE_CALC, (calculations_data[0]+1, alias, user_id))
+        data_base_action(UPDATE_CALC, (calculations_data[0] + 1, alias, user_id))
     else:
         data_base_action(INSERT_CALC, (user_id, 1, alias))
 
@@ -87,13 +87,9 @@ def get_dict_of_credits_data(user_id: int):
         money = receipt[6]
         consumers = [consumer for consumer in receipt[7:25] if consumer is not None]
         for consumer in consumers:
-            if consumer in result_dict and sponsor in result_dict[consumer]:
-                dif_money = result_dict[consumer][sponsor] - money / len(consumers)
-                result_dict[consumer][sponsor] += dif_money
-                # if dif_money < 0:
-                #     result_dict[sponsor][consumer] -= dif_money
-            else:
-                result_dict[sponsor][consumer] += money / len(consumers)
+            dif_money = result_dict[consumer][sponsor] - money / len(consumers)
+            result_dict[consumer][sponsor] += dif_money
+            result_dict[sponsor][consumer] -= dif_money
     return last_calc_id, alias, result_dict
 
 
