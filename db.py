@@ -13,7 +13,7 @@ DATABASE_NAME = env.get_value('DATABASE_URL')
 
 CREATE_DATA_TABLE = """
     CREATE TABLE IF NOT EXISTS cashdata (
-        id PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL, 
         calc_id INTEGER NOT NULL, 
         calc_alias VARCHAR(50), 
@@ -44,7 +44,7 @@ CREATE_DATA_TABLE = """
 CREATE_NEW_DATA_TABLE = """
     DROP TABLE IF EXISTS cashdata;
     CREATE TABLE cashdata (
-        id PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL, 
         calc_id INTEGER NOT NULL, 
         calc_alias VARCHAR(50), 
@@ -74,7 +74,7 @@ CREATE_NEW_DATA_TABLE = """
 """
 CREATE_NOW_CALC_TABLE = """
     CREATE TABLE IF NOT EXISTS calc_now (
-        id PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL, 
         calc_id INTEGER NOT NULL,
         calc_alias VARCHAR(50)
@@ -83,7 +83,7 @@ CREATE_NOW_CALC_TABLE = """
 CREATE_NEW_NOW_CALC_TABLE = """
     DROP TABLE IF EXISTS calc_now;
     CREATE TABLE calc_now (
-        id PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         user_id INTEGER NOT NULL, 
         calc_id INTEGER NOT NULL,
         calc_alias VARCHAR(50)
