@@ -212,7 +212,7 @@ def data_base_fetchone(script, inserted_data=None):
     with dbdriver.connect(DATABASE_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute(script, inserted_data)
-        cursor.execute(script, inserted_data).fetchone()
+        cursor.fetchone()
 
 
 if __name__ == '__main__':
