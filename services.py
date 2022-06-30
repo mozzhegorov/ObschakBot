@@ -86,9 +86,9 @@ def get_dict_of_credits_data(user_id: int):
                 result_dict[sponsor][consumer] = 0
             if consumer in result_dict and sponsor in result_dict[consumer]:
                 dif_money = result_dict[consumer][sponsor] - money / len(consumers)
-                result_dict[consumer][sponsor] -= dif_money
+                result_dict[consumer][sponsor] += dif_money
                 if dif_money < 0:
-                    result_dict[sponsor][consumer] += dif_money
+                    result_dict[sponsor][consumer] -= dif_money
             else:
                 result_dict[sponsor][consumer] += money / len(consumers)
     return last_calc_id, alias, result_dict
