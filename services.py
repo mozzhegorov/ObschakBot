@@ -21,6 +21,7 @@ def add_peceipt(message: str, user_id: int):
         print(f'value error - {e}')
         raise NotCorrectReceipt
     last_receipt = data_base_fetchone(GET_LAST_RECEIPT_DATA, (user_id,))
+    print(user_id)
     calc_id, calc_alias = data_base_fetchone(LAST_CALC_DATA, (user_id,))
     receipt_id = last_receipt[2] if last_receipt else 0
     receipt = (
