@@ -91,7 +91,7 @@ CREATE_NEW_NOW_CALC_TABLE = """
 """
 INSERT_RECEIPT = """
     INSERT INTO cashdata VALUES 
-    (null, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ;
+    (default, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ;
 """
 GET_LAST_CALC = """
     SELECT calc_alias, receipt_id from cashdata
@@ -121,7 +121,7 @@ LIMIT 1
 """
 INSERT_CALC = """
     INSERT INTO calc_now VALUES 
-    (null, %s, %s, %s) ;
+    (default, %s, %s, %s) ;
 """
 DELETE_CALC_FROM_CALCS = """
     DELETE FROM calc_now 
