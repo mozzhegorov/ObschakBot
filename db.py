@@ -114,8 +114,7 @@ SELECT calc_id, calc_alias FROM cashdata
 WHERE user_id=%s
 """
 LAST_CALC_DATA = """
-SELECT * FROM calc_now
-WHERE user_id=%s;
+SELECT * FROM calc_now;
 """
 INSERT_CALC = """
     INSERT INTO calc_now VALUES 
