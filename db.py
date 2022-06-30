@@ -163,12 +163,12 @@ ALL_DATA = """
     SELECT * FROM 'cashdata';
 """
 CALCS_EXISTS = """
-    SELECT name FROM sqlite_master 
-    WHERE type='table' AND name='calc_now';
+    SELECT name FROM information_schema.tables  
+    WHERE name='calc_now';
 """
 DATA_EXISTS = """
-    SELECT name FROM sqlite_master 
-    WHERE type='table' AND name='cashdata';
+    SELECT name FROM information_schema.tables 
+    WHERE name='cashdata';
 """
 UPDATE_CALC = """
     UPDATE 'calc_now' 
