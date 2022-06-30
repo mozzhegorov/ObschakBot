@@ -72,16 +72,14 @@ def get_dict_of_credits_data(user_id: int):
     get_all_receipts = data_base_fetch(GET_ALL_RECEIPT_DATA, (user_id, last_calc_id))
     result_dict = {}
     alias = str
-    sponsors = set()
-    consumers = set()
+    all_persons = set()
     for receipt in get_all_receipts:
         consumers_receipt = [consumer for consumer in receipt[7:25] if consumer is not None]
-        consumers.update(consumers_receipt)
-    for receipt in get_all_receipts:
+        all_persons.update(consumers_receipt)
         sponsor = receipt[5]
-        sponsors.add(sponsor)
-    for sponsor in sponsors:
-        result_dict[sponsor] = {consumer: 0 for consumer in consumers}
+        all_persons.add(sponsor)
+    for sponsor in all_persons:
+        result_dict[sponsor] = {consumer: 0 for consumer in all_persons}
 
     for receipt in get_all_receipts:
         alias = receipt[3]
