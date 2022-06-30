@@ -76,7 +76,7 @@ def get_dict_of_credits_data(user_id: int):
     consumers = set()
     for receipt in get_all_receipts:
         consumers_receipt = [consumer for consumer in receipt[7:25] if consumer is not None]
-        consumers = consumers.update(consumers_receipt)
+        consumers.update(consumers_receipt)
 
     for receipt in get_all_receipts:
         alias = receipt[3]
