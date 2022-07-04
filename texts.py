@@ -49,6 +49,6 @@ def text_all_receipts(all_receipts):
     answer = text(bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n'))
     for receipt in all_receipts:
         user_id, calc_id, calc_alias, receipt_num, sponsor, receipt_money, *consumers = receipt
-        answer.join(italic(f'{receipt_num}'),
-                    f'{sponsor} оплатил {receipt_money} за {consumers}')
+        answer.join(text(italic(f'{receipt_num}'),
+                    f'{sponsor} оплатил {receipt_money} за {consumers}'))
     return text(answer)
