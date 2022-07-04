@@ -45,7 +45,7 @@ def text_all_calcs(all_calcs):
 def text_all_receipts(all_receipts):
     calc_id = all_receipts[0][1]
     calc_alias = all_receipts[0][2]
-    calc_alias = calc_alias if calc_alias else text('(Без имени)')
+    calc_alias = calc_alias if calc_alias else bold('(Без имени)')
     answer = bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n')
     for receipt in all_receipts:
         user_id, calc_id, calc_alias, receipt_num, sponsor, receipt_money, *consumers = receipt
