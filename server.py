@@ -7,7 +7,7 @@ from db import create_tables
 from exceptions import NotCorrectReceipt
 from matplot import get_visual_report, get_visual_table_data
 from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
-    get_dict_of_credits_data, delete_all_calcs, change_calc
+    get_dict_of_credits_data, delete_all_calcs, change_calc, get_all_receipts
 
 from texts import *
 import environ
@@ -80,6 +80,18 @@ async def del_calculation(message: types.Message):
         answer = f'Расчет номер {calc_id} успешно удален'
     else:
         answer = f'Расчет под номером {calc_id} в базе отсутствует'
+    await message.reply(answer)
+
+
+@dp.message_handler(lambda message: message.text.startswith('/receipts'))
+async def all_receipts(message: types.Message):
+    """Получение списка всех чеков в текущем расчете"""
+    receipt_id = int(message.text[9:])
+    all_receipts = get_all_receipts(message.from_user.id)
+    if all_receipts:
+        answer = f'{all_receipts}'
+    else:
+        answer = f'В текущем расчете чеков не обнаружено'
     await message.reply(answer)
 
 

@@ -174,6 +174,11 @@ UPDATE_CALC = """
         calc_alias=%s
     WHERE user_id=%s;
 """
+RECEIPTS_BY_USER_LAST_CALC = """
+    SELECT * FROM cashdata
+    JOIN calc_now as cn on (cashdata.user_id = cn.user_id and cashdata.calc_id = cn.calc_id) 
+    WHERE cn.user_id=%s;
+"""
 
 
 def create_tables():
