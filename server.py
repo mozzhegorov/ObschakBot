@@ -84,7 +84,7 @@ async def del_calculation(message: types.Message):
 
 
 @dp.message_handler(lambda message: message.text.startswith('/receiptdel'))
-async def delete_receipt(message: types.Message):
+async def del_receipt(message: types.Message):
     """Получение списка всех чеков в текущем расчете"""
     receipt_id = int(message.text[11:])
     delete_result = delete_receipt(message.from_user.id, receipt_id)
