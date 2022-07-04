@@ -89,7 +89,7 @@ async def all_receipts(message: types.Message):
     # receipt_id = int(message.text[9:])
     all_receipts = get_all_receipts(message.from_user.id)
     if all_receipts:
-        answer = f'{all_receipts}'
+        answer = text_all_receipts(all_receipts)
     else:
         answer = f'В текущем расчете чеков не обнаружено'
     await message.reply(answer)

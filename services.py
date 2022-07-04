@@ -51,9 +51,8 @@ def get_all_calcs(user_id: int):
 
 def get_all_receipts(user_id: int):
     all_receipts = data_base_fetch(RECEIPTS_BY_USER_LAST_CALC, (user_id,))
-    dict_of_calcs = {calc[0]: calc[1:-1] for calc in all_receipts}
-    print(dict_of_calcs)
-    return dict_of_calcs
+    dict_of_receipts = {calc[0]: calc[1:24] for calc in all_receipts}
+    return dict_of_receipts
 
 
 def delete_calc(user_id: int, calc_id: int):
