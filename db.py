@@ -154,6 +154,10 @@ GET_CALC_BY_USER_CALCID_IN_CASHS = """
     SELECT calc_alias FROM cashdata 
     WHERE user_id=%s and calc_id=%s;
 """
+GET_RECEIPT_BY_USER_RECEIPTID = """
+    SELECT calc_alias FROM cashdata 
+    WHERE user_id=%s and receipt_id=%s;
+"""
 GET_CALC_BY_USER_CALCID_IN_CALCS = """
     SELECT calc_alias FROM cashdata 
     WHERE user_id=%s and calc_id=%s;

@@ -67,7 +67,7 @@ def delete_calc(user_id: int, calc_id: int):
 
 
 def delete_receipt(user_id: int, receipt_id: int):
-    receipt_in_cashdata = data_base_fetch(GET_CALC_BY_USER_CALCID_IN_CASHS, (user_id, receipt_id))
+    receipt_in_cashdata = data_base_fetch(GET_RECEIPT_BY_USER_RECEIPTID, (user_id, receipt_id))
     if receipt_in_cashdata:
         data_base_action(DELETE_RECEIPT_FROM_CASHDATA, (receipt_id, user_id))
         return True
