@@ -51,6 +51,6 @@ def text_all_receipts(all_receipts):
         user_id, calc_id, calc_alias, receipt_num, sponsor, receipt_money, *consumers = receipt
         consumers = [consumer for consumer in consumers if consumer is not None]
         answer += (bold(f'{receipt_num} : ') +
-                   bold(f'{sponsor}') + ' оплатил' + italic(f'{receipt_money}') +
+                   bold(f'{sponsor}') + ' оплатил ' + italic(f'{receipt_money} ') +
                    f'за {consumers} \n')
     return text(answer)
