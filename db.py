@@ -129,6 +129,10 @@ DELETE_CALC_FROM_CASHDATA = """
     DELETE FROM cashdata 
     WHERE calc_id=%s and user_id=%s;
 """
+DELETE_RECEIPT_FROM_CASHDATA = """
+    DELETE FROM cashdata 
+    WHERE receipt_id=%s and user_id=%s;
+"""
 DELETE_ALL_CALCS_FROM_CASHDATA = """
     DELETE FROM cashdata 
     WHERE user_id=%s;
