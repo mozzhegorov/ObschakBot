@@ -86,7 +86,7 @@ async def del_calculation(message: types.Message):
 @dp.message_handler(lambda message: message.text.startswith('/receipts'))
 async def all_receipts(message: types.Message):
     """Получение списка всех чеков в текущем расчете"""
-    receipt_id = int(message.text[9:])
+    # receipt_id = int(message.text[9:])
     all_receipts = get_all_receipts(message.from_user.id)
     if all_receipts:
         answer = f'{all_receipts}'
