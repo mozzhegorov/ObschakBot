@@ -2,13 +2,20 @@ import logging
 
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ParseMode
-
-from db import create_tables
 from exceptions import NotCorrectReceipt
 from matplot import get_visual_report, get_visual_table_data
-from services import add_peceipt, add_new_calc, get_all_calcs, delete_calc, \
-    get_dict_of_credits_data, delete_all_calcs, change_calc, get_all_receipts, delete_receipt
-
+from models import DeclarativeBase, engine
+from services import (
+    add_peceipt,
+    add_new_calc,
+    get_all_calcs,
+    delete_calc,
+    get_dict_of_credits_data,
+    delete_all_calcs,
+    change_calc,
+    get_all_receipts,
+    delete_receipt,
+)
 from texts import *
 import environ
 
@@ -129,7 +136,7 @@ async def reporting(message: types.Message):
     calc_id, calc_alias, report_data = get_dict_of_credits_data(message.from_user.id)
     if report_data:
         answer = text_for_report(calc_id, calc_alias, report_data,
-                                         sponsor_request, consumer_request, full_report)
+                                 sponsor_request, consumer_request, full_report)
     else:
         answer = 'В вашем текущем расчете отсутствуют данные'
     await message.reply(answer)
@@ -151,5 +158,5 @@ async def add_receipt(message: types.Message):
 
 
 if __name__ == '__main__':
-    create_tables()
+    DeclarativeBase.metadata.create_all(engine)
     executor.start_polling(dp, skip_updates=True)
