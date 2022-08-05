@@ -6,19 +6,20 @@ from sqlalchemy import String
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker, backref
+from sqlalchemy.orm import relationship, sessionmaker
+from settings import DATABASE
 
-DATABASE = {
-    'drivername': 'postgres',  # Тут можно использовать MySQL или другой драйвер
-    'host': 'localhost',
-    'port': '5432',
-    'username': 'youuser',
-    'password': 'youpassword',
-    'database': 'youdb'
-}
+# DATABASE = {
+#     'drivername': 'postgres',  # Тут можно использовать MySQL или другой драйвер
+#     'host': 'localhost',
+#     'port': '5432',
+#     'username': 'youuser',
+#     'password': 'youpassword',
+#     'database': 'youdb'
+# }
 
-# engine = create_engine(URL(**DATABASE), echo=True)
-engine = create_engine("sqlite:///test.db")
+engine = create_engine(URL(**DATABASE), echo=True)
+# engine = create_engine("sqlite:///test.db")
 
 DeclarativeBase = declarative_base()
 persons_in_receipts = Table(
