@@ -24,7 +24,6 @@ RUN pip install frozenlist==1.3.0
 RUN pip install idna==3.3
 RUN pip install kiwisolver==1.4.3
 RUN apt-get install python3-matplotlib -y
-#RUN pip install matplotlib==3.5.2
 RUN pip install multidict==6.0.2
 RUN pip install numpy==1.23.0
 RUN pip install packaging==21.3
@@ -35,6 +34,7 @@ RUN pip install python-environ==0.4.54
 RUN pip install pytz==2022.1
 RUN pip install six==1.16.0
 RUN pip install yarl==1.7.2
+RUN pip install matplotlib==3.5.2
 
 COPY *.py ./
 COPY *.env ./
