@@ -35,6 +35,7 @@ RUN pip install pytz==2022.1
 RUN pip install six==1.16.0
 RUN pip install yarl==1.7.2
 RUN pip install matplotlib==3.5.2
+RUN pip install SQLAlchemy==1.4.39
 
 COPY *.py ./
 COPY *.env ./
