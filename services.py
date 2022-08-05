@@ -10,7 +10,6 @@ from models import (
     Calculation, Person,
 )
 from exceptions import *
-# from db import *
 
 
 def open_session():

@@ -36,19 +36,3 @@ def get_visual_table_data(report_data: dict):
             row.pop(-1)
         cell_text.append(row)
     return labels, cell_text
-
-
-if __name__ == '__main__':
-    test_dict = {
-        'трус': {
-            'балбес': 300,
-            'бывалый': 300,
-            'qwe': 500,
-            '333': 900,
-        },
-        'денис': {
-            'балбес': 300,
-            'трус': 300,
-        },
-    }
-    get_visual_report(*get_visual_table_data(get_dict_of_credits_data(1)[2]))

@@ -1,10 +1,6 @@
-import string
-from random import choice
-
 from sqlalchemy import ForeignKey, Column, Integer, Table, Float, Boolean, select
 from sqlalchemy import String
 from sqlalchemy import create_engine
-from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from settings import DATABASE
