@@ -24,7 +24,7 @@ def get_visual_table_data(report_data: dict):
     labels = ['', ]
     for sponsor, consumers in report_data.items():
         for consumer, money in consumers.items():
-            if consumer not in labels:
+            if consumer.name not in labels:
                 labels.append(consumer.name)
 
     for sponsor, consumers in report_data.items():
