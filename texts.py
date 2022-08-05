@@ -28,7 +28,7 @@ def text_for_report(calc_id, calc_alias, report_data,
             if money > 0 and \
                     (sponsor == sponsor_request or full_report) and \
                     (consumer == consumer_request or full_report):
-                answer += f'{consumer} -> {sponsor}: {money}\n'
+                answer += f'{consumer.name} -> {sponsor.name}: {money}\n'
     return answer
 
 

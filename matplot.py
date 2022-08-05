@@ -25,14 +25,14 @@ def get_visual_table_data(report_data: dict):
     for sponsor, consumers in report_data.items():
         for consumer, money in consumers.items():
             if consumer not in labels:
-                labels.append(consumer)
+                labels.append(consumer.name)
 
     for sponsor, consumers in report_data.items():
-        row = [sponsor, ]
+        row = [sponsor.name, ]
         for consumer, money in consumers.items():
             while len(row) < len(labels):
                 row.append('0')
-            row.insert(labels.index(consumer), money)
+            row.insert(labels.index(consumer.name), money)
             row.pop(-1)
         cell_text.append(row)
     return labels, cell_text
