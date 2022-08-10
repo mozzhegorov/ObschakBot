@@ -35,7 +35,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start', 'help'])
 async def new_calculation(message: types.Message):
     """Добавление нового расчета"""
-    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(commands=['new'])
@@ -54,7 +54,7 @@ async def all_calculations(message: types.Message):
         answer = text_all_calcs(all_calcs)
     else:
         answer = 'Отсутствуют отчеты с данными'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(commands=['delall'])
@@ -99,7 +99,7 @@ async def del_receipt(message: types.Message):
         answer = f'Чек успешно удален, для просмотра всех чеков /receipts'
     else:
         answer = f'Чек для удаления не найден'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(commands=['receipts'])
@@ -111,7 +111,7 @@ async def all_receipts(message: types.Message):
         answer = text_all_receipts(all_receipts)
     else:
         answer = f'В текущем расчете чеков не обнаружено'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(lambda message: message.text.startswith('/calc'))
@@ -151,7 +151,7 @@ async def add_receipt(message: types.Message):
         answer_message = text(f'Не корректный ввод \n' f'Корректный ввод: \n',
                               italic('Спонсор 1000 Имя1 Имя2  \n'),
                               'Для получения справки введите /help')
-        await message.answer(answer_message, reply=False, parse_mode=ParseMode.MARKDOWN_V2)
+        await message.answer(answer_message, reply=False, parse_mode=ParseMode.MARKDOWN)
         return
     answer_message = f'Добавлен чек'
     await message.answer(answer_message, reply=False)
