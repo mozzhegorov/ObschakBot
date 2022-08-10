@@ -45,15 +45,21 @@ def text_all_calcs(all_calcs):
     return text(answer)
 
 
-def text_all_receipts(all_receipts):
-    calc_id = all_receipts[0][1]
-    calc_alias = all_receipts[0][2]
-    calc_alias = calc_alias if calc_alias else '(Без имени)'
-    answer = bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n')
-    for receipt in all_receipts:
-        user_id, calc_id, calc_alias, receipt_num, sponsor, receipt_money, *consumers = receipt
-        consumers = [consumer for consumer in consumers if consumer is not None]
-        answer += (bold(f'{receipt_num}: ') +
-                   bold(f'{sponsor}') + ' оплатил ' + italic(f'{receipt_money} ') +
-                   f'за {consumers}\\. ' + f'Удалить чек /receiptdel{receipt_num} \n')
-    return text(answer)
+# def text_all_receipts(all_receipts):
+#     calc_id = all_receipts[0][1]
+#     calc_alias = all_receipts[0][2]
+#     calc_alias = calc_alias if calc_alias else '(Без имени)'
+#     answer = bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n')
+#     for receipt in all_receipts:
+#         user_id, calc_id, calc_alias, receipt_num
+#         user_id = receipt.user_id
+#         calc_id = receipt.calc_id
+#         calc_alias = receipt.calc_alias
+#         receipt_num = receipt.receipt_num
+#         user_id = receipt.user_id
+#         user_id = receipt.user_id
+#         consumers = [consumer for consumer in consumers if consumer is not None]
+#         answer += (bold(f'{receipt_num}: ') +
+#                    bold(f'{sponsor}') + ' оплатил ' + italic(f'{receipt_money} ') +
+#                    f'за {consumers}\\. ' + f'Удалить чек /receiptdel{receipt_num} \n')
+#     return text(answer)

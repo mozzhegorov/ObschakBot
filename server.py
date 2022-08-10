@@ -35,7 +35,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start', 'help'])
 async def new_calculation(message: types.Message):
     """Добавление нового расчета"""
-    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN)
+    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN_V2)
 
 
 @dp.message_handler(commands=['new'])
@@ -54,7 +54,7 @@ async def all_calculations(message: types.Message):
         answer = text_all_calcs(all_calcs)
     else:
         answer = 'Отсутствуют отчеты с данными'
-    await message.reply(answer)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
 
 
 @dp.message_handler(commands=['delall'])
@@ -108,7 +108,8 @@ async def all_receipts(message: types.Message):
     # receipt_id = int(message.text[9:])
     all_receipts = get_all_receipts(message.from_user.id)
     if all_receipts:
-        answer = text_all_receipts(all_receipts)
+        # answer = text_all_receipts(all_receipts)
+        answer = all_receipts
     else:
         answer = f'В текущем расчете чеков не обнаружено'
     await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
