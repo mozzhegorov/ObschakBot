@@ -143,7 +143,7 @@ def delete_receipt(user_id: int, receipt_id: int):
     active_calc = get_last_active_calc_by_user(user_id, session)
     receipt = session.query(Receipt).where(Receipt.user_id == user_id). \
         where(Receipt.calc_id == active_calc.calc_id). \
-        where(Receipt.receipt_id == receipt_id)
+        where(Receipt.receipt_id == receipt_id).first()
     session.delete(receipt)
     session.commit()
 
