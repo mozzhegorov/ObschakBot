@@ -38,7 +38,7 @@ def text_all_calcs(all_calcs):
         calc_alias = calc.calc_alias
         calc_id = calc.calc_id
 
-        calc_alias = calc_alias if calc_alias else '(Без имени)'
+        calc_alias = calc_alias if calc_alias else "*\Без имени*\ "
         answer += f'Номер расчета {calc_id}, имя {calc_alias}.  ' \
                   f'Удалить - /\del{calc_id}, ' \
                   f'Сделать активным /\calc{calc_id} \n'
@@ -46,14 +46,12 @@ def text_all_calcs(all_calcs):
 
 
 def text_all_receipts(all_receipts):
-
     calc_id = all_receipts[0].calc_id
     calc_alias = all_receipts[0].calc_alias
 
     calc_alias = calc_alias if calc_alias else '(Без имени)'
     answer = bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n')
     for receipt in all_receipts:
-
         receipt_num = receipt.receipt_id
         sponsor = receipt.sponsor
         receipt_money = receipt.sum
