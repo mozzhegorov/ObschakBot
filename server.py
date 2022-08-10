@@ -112,7 +112,7 @@ async def all_receipts(message: types.Message):
         answer = all_receipts
     else:
         answer = f'В текущем расчете чеков не обнаружено'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer)
 
 
 @dp.message_handler(lambda message: message.text.startswith('/calc'))
