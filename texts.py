@@ -34,7 +34,10 @@ def text_for_report(calc_id, calc_alias, report_data,
 
 def text_all_calcs(all_calcs):
     answer = bold('Список всех расчетов\n')
-    for calc_id, calc_alias in all_calcs.items():
+    for calc in all_calcs:
+        calc_alias = calc.calc_alias
+        calc_id = calc.calc_id
+
         calc_alias = calc_alias if calc_alias else '(Без имени)'
         answer += f'Номер расчета {calc_id}, имя {calc_alias}.  ' \
                   f'Удалить - /del{calc_id}, ' \
