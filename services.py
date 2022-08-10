@@ -144,6 +144,7 @@ def delete_receipt(user_id: int, receipt_id: int):
     receipt = session.query(Receipt).where(Receipt.user_id == user_id). \
         where(Receipt.calc_id == active_calc.calc_id). \
         where(Receipt.receipt_id == receipt_id).first()
+    print(receipt, receipt.id, receipt.receipt_id)
     session.delete(receipt)
     session.commit()
 
