@@ -54,7 +54,7 @@ async def all_calculations(message: types.Message):
         answer = text_all_calcs(all_calcs)
     else:
         answer = 'Отсутствуют отчеты с данными'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(commands=['delall'])
