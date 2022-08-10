@@ -35,7 +35,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start', 'help'])
 async def new_calculation(message: types.Message):
     """Добавление нового расчета"""
-    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN_V2_V2)
+    await message.answer(START_TEXT, parse_mode=ParseMode.MARKDOWN_V2)
 
 
 @dp.message_handler(commands=['new'])
@@ -54,7 +54,7 @@ async def all_calculations(message: types.Message):
         answer = text_all_calcs(all_calcs)
     else:
         answer = 'Отсутствуют отчеты с данными'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
 
 
 @dp.message_handler(commands=['delall'])
