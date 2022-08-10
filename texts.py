@@ -54,7 +54,7 @@ def text_all_receipts(all_receipts):
     answer = bold(f'Список всех чеков по расчету номер {calc_id} с именем {calc_alias} \n')
     for receipt in all_receipts:
 
-        receipt_num = receipt.receipt_num
+        receipt_num = receipt.receipt_id
         sponsor = receipt.sponsor
         receipt_money = receipt.sum
         consumers = receipt.consumers
