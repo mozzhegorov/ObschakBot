@@ -99,7 +99,7 @@ async def del_receipt(message: types.Message):
         answer = f'Чек успешно удален, для просмотра всех чеков /receipts'
     else:
         answer = f'Чек для удаления не найден'
-    await message.reply(answer, parse_mode=ParseMode.MARKDOWN_V2)
+    await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
 @dp.message_handler(commands=['receipts'])
