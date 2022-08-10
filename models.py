@@ -43,7 +43,7 @@ class Person(DeclarativeBase):
     )
 
     def __repr__(self):
-        return f"Person(id={self.id!r})"
+        return f"{self.name!r}"
 
 
 class Receipt(DeclarativeBase):
