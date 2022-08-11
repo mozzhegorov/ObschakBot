@@ -43,7 +43,6 @@ def text_all_calcs(all_calcs):
                   f'Удалить - /del{calc_id}, ' \
                   f'Сделать активным /calc{calc_id} \n'
 
-    print(answer)
     return text(answer)
 
 

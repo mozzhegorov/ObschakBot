@@ -54,6 +54,7 @@ async def all_calculations(message: types.Message):
         answer = text_all_calcs(all_calcs)
     else:
         answer = 'Отсутствуют отчеты с данными'
+    print(answer)
     await message.reply(answer, parse_mode=ParseMode.MARKDOWN)
 
 
