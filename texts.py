@@ -33,7 +33,7 @@ def text_for_report(calc_id, calc_alias, report_data,
 
 
 def text_all_calcs(all_calcs):
-    answer = '(Список всех расчетов\n*'
+    answer = 'Список всех расчетов\n'
     for calc in all_calcs:
         calc_alias = calc.calc_alias
         calc_id = calc.calc_id
