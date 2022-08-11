@@ -38,7 +38,7 @@ def text_all_calcs(all_calcs):
         calc_alias = calc.calc_alias
         calc_id = calc.calc_id
 
-        calc_alias = calc_alias if calc_alias else '(Без имени)'
+        calc_alias = calc_alias if calc_alias else '_Без имени_'
         answer += f'Номер расчета {calc_id}, имя {calc_alias}.  ' \
                   f'Удалить - /del{calc_id}, ' \
                   f'Сделать активным /calc{calc_id} \n'
