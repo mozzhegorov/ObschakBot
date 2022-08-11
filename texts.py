@@ -42,6 +42,8 @@ def text_all_calcs(all_calcs):
         answer += f'Номер расчета {calc_id}, имя {calc_alias}.  ' \
                   f'Удалить - /del{calc_id}, ' \
                   f'Сделать активным /calc{calc_id} \n'
+
+    print(answer)
     return text(answer)
 
 
