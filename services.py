@@ -59,9 +59,10 @@ def get_last_active_calc_by_user(user_id: int, session: Session):
 
 
 def get_last_calc_by_user(user_id: int, session: Session):
-    last_calc_query = select(Calculation). \
-        where(Calculation.user_id == user_id)
-    return session.scalar(last_calc_query)
+    last_calc_query = session.query(Calculation). \
+        where(Calculation.user_id == user_id). \
+        order_by(Calculation.calc_id.desc()).first()
+    return last_calc_query
 
 
 def add_peceipt(message: str, user_id: int):
@@ -130,12 +131,15 @@ def get_all_receipts(user_id: int) -> List[Receipt]:
 
 def delete_calc(user_id: int, calc_id: int):
     session = open_session()
-    session.query(Calculation).where(Calculation.calc_id == calc_id). \
-        where(Calculation.user_id == user_id).delete()
+    calculation_for_delete = session.query(Calculation).\
+        where(Calculation.calc_id == calc_id). \
+        where(Calculation.user_id == user_id)
+    calculation_for_delete.delete()
     session.query(Receipt).where(Receipt.calc_id == calc_id). \
         where(Receipt.user_id == user_id).delete()
-    new_active_calc = get_last_calc_by_user(user_id, session)
-    new_active_calc.active = True
+    if calculation_for_delete.active:
+        new_active_calc = get_last_calc_by_user(user_id, session)
+        new_active_calc.active = True
     session.commit()
 
 
