@@ -168,8 +168,8 @@ def get_dict_of_credits_data(user_id: int):
     print(user_id)
     all_receipts: List[Receipt] = session.query(Receipt). \
         join(Calculation, Receipt.calc_id == Calculation.calc_id). \
-        where(Calculation.active). \
-        where(Calculation.user_id == int(user_id)).all()
+        filter(Calculation.active). \
+        filter(Calculation.user_id == int(user_id)).all()
     print([receipt for receipt in all_receipts])
     active_calc = get_last_active_calc_by_user(user_id, session)
     result_dict = {}
