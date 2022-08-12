@@ -141,12 +141,12 @@ def delete_calc(user_id: int, calc_id: int):
     if calc_is_active:
         new_active_calc = get_last_calc_by_user(user_id, session)
         new_active_calc.active = True
-    Receipt.query.\
-        filter(Receipt.calc_id == calc_id). \
-        filter(Receipt.user_id == user_id).delete()
-    # receipt_for_delete = session.query(Receipt).\
+    # Receipt.query.\
     #     filter(Receipt.calc_id == calc_id). \
-    #     filter(Receipt.user_id == user_id).all()
+    #     filter(Receipt.user_id == user_id).delete()
+    receipt_for_delete = session.query(Receipt).\
+        filter(Receipt.calc_id == calc_id). \
+        filter(Receipt.user_id == user_id).delete(synchronize_session=False)
     # if receipt_for_delete:
     #     for receipt in receipt_for_delete:
     #         session.delete(receipt)
