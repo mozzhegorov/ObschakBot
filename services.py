@@ -177,18 +177,18 @@ def get_dict_of_credits_data(user_id: int):
     alias = str
     all_persons = set()
     for receipt in all_receipts:
-        consumers_receipt = [consumer for consumer in receipt.consumers]
+        consumers_receipt = [consumer for consumer in receipt[0].consumers]
         all_persons.update(consumers_receipt)
-        sponsor = receipt.sponsor
+        sponsor = receipt[0].sponsor
         all_persons.add(sponsor)
     for sponsor in all_persons:
         result_dict[sponsor] = {consumer: 0 for consumer in all_persons}
     print(all_persons)
     for receipt in all_receipts:
-        alias = receipt.calc_alias
-        sponsor = receipt.sponsor
-        money = receipt.sum
-        consumers_receipt = [consumer for consumer in receipt.consumers]
+        alias = receipt[0].calc_alias
+        sponsor = receipt[0].sponsor
+        money = receipt[0].sum
+        consumers_receipt = [consumer for consumer in receipt[0].consumers]
         for consumer in consumers_receipt:
             if consumer == sponsor:
                 continue
