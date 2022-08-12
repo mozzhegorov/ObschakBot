@@ -13,15 +13,20 @@ persons_in_receipts = Table(
     DeclarativeBase.metadata,
     Column(
         'person_id',
-        ForeignKey("person.id"),
+        ForeignKey(
+            "person.id",
+            ondelete="CASCADE",
+        ),
         primary_key=True,
         ondelete="CASCADE",
     ),
     Column(
         'receipt_id',
-        ForeignKey("receipt.id"),
+        ForeignKey(
+            "receipt.id",
+            ondelete="CASCADE",
+        ),
         primary_key=True,
-        ondelete="CASCADE",
     )
 )
 
