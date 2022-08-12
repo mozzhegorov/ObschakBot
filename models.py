@@ -16,7 +16,7 @@ persons_in_receipts = Table(
         Integer,
         ForeignKey(
             "person.id",
-            ondelete="NO ACTION",
+            # ondelete="CASCADE",
         ),
     ),
     Column(
@@ -24,7 +24,7 @@ persons_in_receipts = Table(
         Integer,
         ForeignKey(
             "receipt.id",
-            ondelete="NO ACTION",
+            ondelete="CASCADE",
         ),
     )
 )
