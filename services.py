@@ -165,7 +165,7 @@ def change_calc(user_id: int, calc_id: int):
 
 def get_dict_of_credits_data(user_id: int):
     session = open_session()
-    print(user_id)
+    print("qweqweqwe", user_id)
     all_receipts: List[Receipt] = session.query(Receipt). \
         join(Calculation, Receipt.calc_id == Calculation.calc_id). \
         filter(Calculation.active). \
