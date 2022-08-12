@@ -167,7 +167,8 @@ def change_calc(user_id: int, calc_id: int):
     session = open_session()
     active_calc = get_last_active_calc_by_user(user_id, session)
     print(active_calc)
-    active_calc.active = False
+    if active_calc:
+        active_calc.active = False
     calc = session.query(Calculation).where(Calculation.calc_id == calc_id). \
         where(Calculation.user_id == user_id).one()
     calc.active = True
