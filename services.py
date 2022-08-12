@@ -170,7 +170,7 @@ def get_dict_of_credits_data(user_id: int):
         join(Calculation, Receipt.calc_id == Calculation.calc_id). \
         where(Calculation.active). \
         where(Calculation.user_id == user_id).all()
-    print(all_receipts)
+    print([receipt for receipt in all_receipts])
     active_calc = get_last_active_calc_by_user(user_id, session)
     result_dict = {}
     alias = str
