@@ -168,8 +168,9 @@ def get_dict_of_credits_data(user_id: int):
     session = open_session()
     print("qweqweqwe", user_id)
     all_receipts: List[Receipt] = session.query(Receipt). \
-        outerjoin(Calculation, and_(Receipt.calc_id == Calculation.calc_id, Calculation.active),
-                  full=True). \
+        join(Calculation,
+                  and_(Receipt.calc_id == Calculation.calc_id, Calculation.active),
+                  isouter=True). \
         filter(Calculation.active). \
         filter(Receipt.user_id == user_id).all()
     print([receipt for receipt in all_receipts])
