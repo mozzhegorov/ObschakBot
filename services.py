@@ -65,13 +65,6 @@ def get_last_calc_by_user(user_id: int, session: Session):
     return last_calc_query
 
 
-def get_last_calc_by_user(user_id: int, session: Session):
-    last_calc_query = session.query(Calculation). \
-        where(Calculation.user_id == user_id). \
-        order_by(Calculation.calc_id.desc())
-    return last_calc_query
-
-
 def add_peceipt(message: str, user_id: int):
     try:
         sponsor, money, consumers = get_data_from_user(message)
