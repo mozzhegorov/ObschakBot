@@ -160,7 +160,7 @@ def delete_receipt(user_id: int, receipt_id: int):
     #     filter(Receipt.user_id == user_id). \
     #     filter(Receipt.calc_id == active_calc.calc_id). \
     #     filter(Receipt.receipt_id == receipt_id).first()
-    print("RECCCCCEIPT", receipt)
+    # print("RECCCCCEIPT", receipt)
         # session.delete(receipt)
     receipt = session.query(Receipt). \
         filter(Receipt.user_id == user_id). \
