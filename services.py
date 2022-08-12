@@ -182,7 +182,7 @@ def get_dict_of_credits_data(user_id: int):
         all_persons.add(sponsor)
     for sponsor in all_persons:
         result_dict[sponsor] = {consumer: 0 for consumer in all_persons}
-
+    print(all_persons)
     for receipt in all_receipts:
         alias = receipt.calc_alias
         sponsor = receipt.sponsor
