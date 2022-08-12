@@ -17,7 +17,6 @@ persons_in_receipts = Table(
         ForeignKey(
             "person.id",
         ),
-        ondelete="CASCADE",
     ),
     Column(
         'receipt_id',
