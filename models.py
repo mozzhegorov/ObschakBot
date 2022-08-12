@@ -54,7 +54,7 @@ class Receipt(DeclarativeBase):
         primary_key=True,
     )
     user_id = Column(
-        Integer,
+        BigInteger,
         nullable=False,
     )
     calc_id = Column(
@@ -93,7 +93,7 @@ class Calculation(DeclarativeBase):
         primary_key=True,
     )
     user_id = Column(
-        Integer,
+        BigInteger,
         nullable=False,
     )
     calc_id = Column(
