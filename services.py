@@ -100,7 +100,7 @@ def add_peceipt(message: str, user_id: int):
 
 def add_new_calc(alias: str, user_id: int):
     session = open_session()
-    calculations_data: Calculation = get_last_active_calc_by_user(user_id, session)
+    calculations_data: Calculation = get_last_calc_by_user(user_id, session)
     if calculations_data:
         calculations_data.active = False
         new_calculation: Calculation = Calculation(
