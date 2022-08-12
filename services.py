@@ -148,7 +148,6 @@ def delete_calc(user_id: int, calc_id: int):
     session.query(Receipt).\
         filter(Receipt.calc_id == calc_id). \
         filter(Receipt.user_id == user_id).delete()
-    # session.delete(receipt_for_delete)
     session.commit()
     return True
 
@@ -156,20 +155,12 @@ def delete_calc(user_id: int, calc_id: int):
 def delete_receipt(user_id: int, receipt_id: int):
     session = open_session()
     active_calc = get_last_active_calc_by_user(user_id, session)
-    # receipt = session.query(Receipt).\
-    #     filter(Receipt.user_id == user_id). \
-    #     filter(Receipt.calc_id == active_calc.calc_id). \
-    #     filter(Receipt.receipt_id == receipt_id).first()
-    # print("RECCCCCEIPT", receipt)
-        # session.delete(receipt)
     receipt = session.query(Receipt). \
         filter(Receipt.user_id == user_id). \
         filter(Receipt.calc_id == active_calc.calc_id). \
         filter(Receipt.receipt_id == receipt_id).delete()
     session.commit()
     return receipt
-    # else:
-    #     return False
 
 
 def change_calc(user_id: int, calc_id: int):

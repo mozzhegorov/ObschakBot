@@ -24,7 +24,7 @@ persons_in_receipts = Table(
         Integer,
         ForeignKey(
             "receipt.id",
-            ondelete="CASCADE",
+            # ondelete="CASCADE",
         ),
     )
 )
