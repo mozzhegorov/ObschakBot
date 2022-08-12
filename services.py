@@ -53,7 +53,8 @@ def get_last_receipt_by_user(user_id: int, session: Session):
 def get_last_active_calc_by_user(user_id: int, session: Session):
     last_calc_query = select(Calculation). \
         where(Calculation.user_id == user_id). \
-        where(Calculation.active)
+        where(Calculation.active). \
+        order_by(Calculation.id.desc()).first()
     return session.scalar(last_calc_query)
 
 

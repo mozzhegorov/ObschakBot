@@ -150,7 +150,7 @@ async def add_receipt(message: types.Message):
         add_peceipt(message.text, message.from_user.id)
     except NotCorrectReceipt as e:
         answer_message = text(f'Не корректный ввод \n' f'Корректный ввод: \n',
-                              italic('Спонсор 1000 Имя1 Имя2  \n'),
+                              '_Спонсор 1000 Имя1 Имя2  \n_',
                               'Для получения справки введите /help')
         await message.answer(answer_message, reply=False, parse_mode=ParseMode.MARKDOWN)
         return
