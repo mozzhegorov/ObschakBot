@@ -116,7 +116,9 @@ def add_new_calc(alias: str, user_id: int):
 
 def get_all_calcs(user_id: int) -> List[Calculation]:
     session = open_session()
-    all_calcs = session.query(Calculation).where(Calculation.user_id == user_id).all()
+    all_calcs = session.query(Calculation).\
+        where(Calculation.user_id == user_id).\
+        order_by(Calculation.calc_id).all()
     return all_calcs
 
 
@@ -125,7 +127,8 @@ def get_all_receipts(user_id: int) -> List[Receipt]:
     all_receipts = session.query(Receipt). \
         join(Calculation, Receipt.calc_id == Calculation.calc_id). \
         where(Calculation.active). \
-        where(Calculation.user_id == user_id).all()
+        where(Calculation.user_id == user_id).\
+        order_by(Receipt.receipt_id).all()
     return all_receipts
 
 
