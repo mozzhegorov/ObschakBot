@@ -134,6 +134,8 @@ def delete_calc(user_id: int, calc_id: int):
     calculation_for_delete = session.query(Calculation).\
         where(Calculation.calc_id == calc_id). \
         where(Calculation.user_id == user_id)
+    if calculation_for_delete is None:
+        return False
     if calculation_for_delete.first().active:
         new_active_calc = get_last_calc_by_user(user_id, session)
         new_active_calc.active = True
@@ -141,6 +143,7 @@ def delete_calc(user_id: int, calc_id: int):
     session.query(Receipt).where(Receipt.calc_id == calc_id). \
         where(Receipt.user_id == user_id).delete()
     session.commit()
+    return True
 
 
 def delete_receipt(user_id: int, receipt_id: int):
