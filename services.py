@@ -54,7 +54,7 @@ def get_last_active_calc_by_user(user_id: int, session: Session):
     last_calc_query = session.query(Calculation). \
         where(Calculation.user_id == user_id). \
         where(Calculation.active). \
-        order_by(Calculation.calc_id.desc())
+        order_by(Calculation.calc_id.desc()).first()
     return last_calc_query
 
 
@@ -74,7 +74,7 @@ def add_peceipt(message: str, user_id: int):
     session = open_session()
     last_receipt = get_last_receipt_by_user(user_id, session)
     new_receipt_id = last_receipt.receipt_id + 1 if last_receipt else 1
-    active_calc = get_last_active_calc_by_user(user_id, session).first()
+    active_calc = get_last_active_calc_by_user(user_id, session)
     sponsor = get_or_create(session, Person, name=sponsor)
     new_receipt = Receipt(
         user_id=user_id,
@@ -93,7 +93,7 @@ def add_peceipt(message: str, user_id: int):
 
 def add_new_calc(alias: str, user_id: int):
     session = open_session()
-    calculations_data: Calculation = get_last_active_calc_by_user(user_id, session).first()
+    calculations_data: Calculation = get_last_active_calc_by_user(user_id, session)
     if calculations_data:
         calculations_data.active = False
         new_calculation: Calculation = Calculation(
@@ -149,7 +149,7 @@ def delete_calc(user_id: int, calc_id: int):
 
 def delete_receipt(user_id: int, receipt_id: int):
     session = open_session()
-    active_calc = get_last_active_calc_by_user(user_id, session).first()
+    active_calc = get_last_active_calc_by_user(user_id, session)
     receipt = session.query(Receipt).where(Receipt.user_id == user_id). \
         where(Receipt.calc_id == active_calc.calc_id). \
         where(Receipt.receipt_id == receipt_id).first()
@@ -163,7 +163,7 @@ def delete_receipt(user_id: int, receipt_id: int):
 
 def change_calc(user_id: int, calc_id: int):
     session = open_session()
-    active_calc = get_last_active_calc_by_user(user_id, session).first()
+    active_calc = get_last_active_calc_by_user(user_id, session)
     print(active_calc)
     active_calc.active = False
     calc = session.query(Calculation).where(Calculation.calc_id == calc_id). \
@@ -181,7 +181,7 @@ def get_dict_of_credits_data(user_id: int):
         filter(Calculation.active). \
         filter(Calculation.user_id == user_id).all()
     print([receipt for receipt in all_receipts])
-    active_calc = get_last_active_calc_by_user(user_id, session).first()
+    active_calc = get_last_active_calc_by_user(user_id, session)
     result_dict = {}
     alias = str
     all_persons = set()
