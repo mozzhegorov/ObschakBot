@@ -156,7 +156,8 @@ def delete_calc(user_id: int, calc_id: int):
 def delete_receipt(user_id: int, receipt_id: int):
     session = open_session()
     active_calc = get_last_active_calc_by_user(user_id, session)
-    receipt = session.query(Receipt).where(Receipt.user_id == user_id). \
+    receipt = session.query(Receipt).\
+        filter(Receipt.user_id == user_id). \
         filter(Receipt.calc_id == active_calc.calc_id). \
         filter(Receipt.receipt_id == receipt_id).first()
     print("RECCCCCEIPT", receipt)
