@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey, Column, Integer, Table, Float, Boolean, select
+from sqlalchemy import ForeignKey, Column, Integer, Table, Float, Boolean, select, BigInteger
 from sqlalchemy import String
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
