@@ -138,19 +138,21 @@ def delete_calc(user_id: int, calc_id: int):
         return False
     calc_is_active = calculation_for_delete.first().active
     calculation_for_delete.delete()
+    session.flush()
     if calc_is_active:
         new_active_calc = get_last_calc_by_user(user_id, session)
         new_active_calc.active = True
-    receipt_for_delete = Receipt.delete(). \
-        where(Receipt.calc_id == calc_id). \
-        where(Receipt.user_id == user_id)
-    engine.execute(receipt_for_delete)
+    # receipt_for_delete = Receipt.delete(). \
+    #     where(Receipt.calc_id == calc_id). \
+    #     where(Receipt.user_id == user_id)
+    # engine.execute(receipt_for_delete)
     # Receipt.query.\
     #     filter(Receipt.calc_id == calc_id). \
     #     filter(Receipt.user_id == user_id).delete()
-    # receipt_for_delete = session.query(Receipt).\
-    #     filter(Receipt.calc_id == calc_id). \
-    #     filter(Receipt.user_id == user_id).delete()
+    receipt_for_delete = session.query(Receipt).\
+        filter(Receipt.calc_id == calc_id). \
+        filter(Receipt.user_id == user_id).all()
+    session.delete(receipt_for_delete)
     # if receipt_for_delete:
     #     for receipt in receipt_for_delete:
     #         session.delete(receipt)
