@@ -61,6 +61,13 @@ def get_last_active_calc_by_user(user_id: int, session: Session):
 def get_last_calc_by_user(user_id: int, session: Session):
     last_calc_query = session.query(Calculation). \
         where(Calculation.user_id == user_id). \
+        order_by(Calculation.calc_id).first()
+    return last_calc_query
+
+
+def get_last_calc_by_user(user_id: int, session: Session):
+    last_calc_query = session.query(Calculation). \
+        where(Calculation.user_id == user_id). \
         order_by(Calculation.calc_id.desc())
     return last_calc_query
 
