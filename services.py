@@ -1,6 +1,6 @@
 from typing import List
 
-from sqlalchemy import select
+from sqlalchemy import select, and_
 from sqlalchemy.orm import Session
 
 from models import (
@@ -168,7 +168,8 @@ def get_dict_of_credits_data(user_id: int):
     session = open_session()
     print("qweqweqwe", user_id)
     all_receipts: List[Receipt] = session.query(Receipt). \
-        outerjoin(Calculation, Receipt.calc_id == Calculation.calc_id, full=True). \
+        outerjoin(Calculation, and_(Receipt.calc_id == Calculation.calc_id, Calculation.active),
+                  full=True). \
         filter(Calculation.active). \
         filter(Receipt.user_id == user_id).all()
     print([receipt for receipt in all_receipts])
