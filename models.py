@@ -5,7 +5,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from settings import DATABASE
 
-
 engine = create_engine(DATABASE, echo=True)
 
 DeclarativeBase = declarative_base()
@@ -16,11 +15,13 @@ persons_in_receipts = Table(
         'person_id',
         ForeignKey("person.id"),
         primary_key=True,
+        ondelete="CASCADE",
     ),
     Column(
         'receipt_id',
         ForeignKey("receipt.id"),
         primary_key=True,
+        ondelete="CASCADE",
     )
 )
 
