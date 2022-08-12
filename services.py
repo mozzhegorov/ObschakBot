@@ -1,6 +1,6 @@
 from typing import List
 
-from sqlalchemy import select, and_
+from sqlalchemy import select, and_, delete
 from sqlalchemy.orm import Session
 
 from models import (
@@ -149,9 +149,13 @@ def delete_calc(user_id: int, calc_id: int):
     # Receipt.query.\
     #     filter(Receipt.calc_id == calc_id). \
     #     filter(Receipt.user_id == user_id).delete()
-    receipt_for_delete = session.query(Receipt).\
-        filter(Receipt.calc_id == calc_id). \
-        filter(Receipt.user_id == user_id).delete()
+    statement = delete(Receipt). \
+        where(Receipt.calc_id == calc_id). \
+        where(Receipt.user_id == user_id)
+    session.execute(statement)
+    # receipt_for_delete = session.query(Receipt).\
+    #     filter(Receipt.calc_id == calc_id). \
+    #     filter(Receipt.user_id == user_id).delete()
     # session.delete(receipt_for_delete)
     # if receipt_for_delete:
     #     for receipt in receipt_for_delete:
