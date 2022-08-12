@@ -83,8 +83,7 @@ class Receipt(DeclarativeBase):
     consumers = relationship(
         "Person",
         secondary=persons_in_receipts,
-        ondelete="cascade",
-        # cascade="delete",
+        cascade="all, delete-orphan",
         # backref=backref("persons", uselist=False),
     )
 
