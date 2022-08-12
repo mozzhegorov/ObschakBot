@@ -146,10 +146,10 @@ def delete_calc(user_id: int, calc_id: int):
     #     filter(Receipt.user_id == user_id).delete()
     receipt_for_delete = session.query(Receipt).\
         filter(Receipt.calc_id == calc_id). \
-        filter(Receipt.user_id == user_id).delete(synchronize_session='evaluate')
-    # if receipt_for_delete:
-    #     for receipt in receipt_for_delete:
-    #         session.delete(receipt)
+        filter(Receipt.user_id == user_id)
+    if receipt_for_delete:
+        for receipt in receipt_for_delete:
+            session.delete(receipt)
     session.commit()
     return True
 
