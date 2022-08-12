@@ -159,7 +159,7 @@ def delete_receipt(user_id: int, receipt_id: int):
     receipt = session.query(Receipt).where(Receipt.user_id == user_id). \
         filter(Receipt.calc_id == active_calc.calc_id). \
         filter(Receipt.receipt_id == receipt_id).first()
-    print(receipt)
+    print("RECCCCCEIPT", receipt)
     if receipt:
         session.delete(receipt)
         session.commit()
