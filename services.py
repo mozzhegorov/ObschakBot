@@ -166,7 +166,7 @@ def delete_receipt(user_id: int, receipt_id: int):
         filter(Receipt.user_id == user_id). \
         filter(Receipt.calc_id == active_calc.calc_id). \
         filter(Receipt.receipt_id == receipt_id).delete()
-        # session.commit()
+    session.commit()
     return receipt
     # else:
     #     return False
