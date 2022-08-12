@@ -54,7 +54,7 @@ def get_last_active_calc_by_user(user_id: int, session: Session):
     last_calc_query = session.query(Calculation). \
         where(Calculation.user_id == user_id). \
         where(Calculation.active). \
-        order_by(Calculation.calc_id.desc()).first()
+        order_by(Calculation.calc_id).first()
     return last_calc_query
 
 
@@ -142,24 +142,10 @@ def delete_calc(user_id: int, calc_id: int):
     if calc_is_active:
         new_active_calc = get_last_calc_by_user(user_id, session)
         new_active_calc.active = True
-    # receipt_for_delete = Receipt.delete(). \
-    #     where(Receipt.calc_id == calc_id). \
-    #     where(Receipt.user_id == user_id)
-    # engine.execute(receipt_for_delete)
-    # Receipt.query.\
-    #     filter(Receipt.calc_id == calc_id). \
-    #     filter(Receipt.user_id == user_id).delete()
-    statement = delete(Receipt). \
-        where(Receipt.calc_id == calc_id). \
-        where(Receipt.user_id == user_id)
-    session.execute(statement)
-    # receipt_for_delete = session.query(Receipt).\
-    #     filter(Receipt.calc_id == calc_id). \
-    #     filter(Receipt.user_id == user_id).delete()
+    session.query(Receipt).\
+        filter(Receipt.calc_id == calc_id). \
+        filter(Receipt.user_id == user_id).delete()
     # session.delete(receipt_for_delete)
-    # if receipt_for_delete:
-    #     for receipt in receipt_for_delete:
-    #         session.delete(receipt)
     session.commit()
     return True
 
